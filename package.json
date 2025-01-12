@@ -1,0 +1,23 @@
+{
+  "name": "www.jonathan-about.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/j-about/www.jonathan-about.com.git"
+  },
+  "author": "j-about <142051449+j-about@users.noreply.github.com> (https://github.com/j-about)",
+  "bugs": {
+    "url": "https://github.com/j-about/www.jonathan-about.com/issues"
+  },
+  "homepage": "https://github.com/j-about/www.jonathan-about.com#readme",
+  "devDependencies": {
+    "daisyui": "4.12.23",
+    "gulp": "5.0.0",
+    "prettier": "3.4.2",
+    "prettier-plugin-tailwindcss": "0.6.9",
+    "tailwindcss": "3.4.17"
+  },
+  "dependencies": {
+    "htmx.org": "2.0.4",
+    "hyperscript.org": "0.9.13"
+  }
+}
