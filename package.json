@@ -19,5 +19,9 @@
   "dependencies": {
     "htmx.org": "2.0.4",
     "hyperscript.org": "0.9.13"
+  },
+  "scripts": {
+    "gulp": "gulp",
+    "watch": "gulp watch"
   }
 }
