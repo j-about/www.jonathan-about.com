@@ -3,9 +3,485 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jonathan About</title>
+    <meta
+      name="description"
+      content="Web Developer | MLOps Engineer ~ Data Engineer | Teacher Assistant @ Le Wagon Paris"
+    />
     <link href="./css/style.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="48x48"
+      href="./favicon-48x48.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="./favicon-96x96.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="./apple-touch-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="./apple-touch-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="./apple-touch-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="./apple-touch-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./apple-touch-icon-180x180.png"
+    />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="msapplication-TileImage" content="./ms-tile-144x144.png" />
+    <link rel="manifest" href="./site.webmanifest" />
   </head>
-  <body>
-    <h1 class="text-3xl font-bold underline">Hello world!</h1>
+  <body class="grid h-screen grid-rows-[auto_1fr_auto] overflow-y-hidden">
+    <header class="sticky top-0 z-50 shadow-md">
+      <div class="navbar bg-base-100">
+        <div class="navbar-start">
+          <div class="dropdown">
+            <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
+            </div>
+            <ul
+              tabindex="0"
+              class="menu dropdown-content menu-sm z-[1] mt-3 w-52 rounded-box bg-base-100 p-2 shadow"
+            >
+              <li><a href="#projects">Projects</a></li>
+              <li><a href="#skills">Skills</a></li>
+              <li><a href="#education">Education</a></li>
+            </ul>
+          </div>
+          <a class="btn btn-ghost text-xl" href="#about">Jonathan About</a>
+        </div>
+        <div class="navbar-center hidden lg:flex">
+          <ul class="menu menu-horizontal px-1">
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#education">Education</a></li>
+          </ul>
+        </div>
+        <div class="navbar-end"></div>
+      </div>
+    </header>
+    <main class="overflow-y-scroll">
+      <section
+        id="about"
+        class="hero h-full"
+        style="
+          background-image: url(./img/about_background.png);
+          background-image: image-set(
+            url(./img/about_background.png) 1x,
+            url(./img/about_background@2x.png) 2x
+          );
+        "
+      >
+        <div class="hero-overlay bg-opacity-60"></div>
+        <div class="hero-content select-none text-center text-neutral-content">
+          <div class="max-w-md">
+            <h1 class="mb-5 text-5xl font-bold">Jonathan About</h1>
+            <ul class="list-none">
+              <li>Web Developer</li>
+              <li>MLOps Engineer ~ Data Engineer</li>
+              <li>Teacher Assistant @ Le Wagon Paris</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section
+        id="projects"
+        class="hero h-full"
+        style="
+          background-image: url(./img/projects_background.png);
+          background-image: image-set(
+            url(./img/projects_background.png) 1x,
+            url(./img/projects_background@2x.png) 2x
+          );
+        "
+      >
+        <div class="hero-overlay bg-opacity-60"></div>
+        <div class="hero-content select-none text-neutral-content">
+          <div class="max-w-full">
+            <h1 class="mb-5 text-center text-5xl font-bold">Projects</h1>
+            <div class="card glass shadow-xl lg:card-side">
+              <figure>
+                <img
+                  src="./img/SûrEtBon.jpg"
+                  srcset="./img/SûrEtBon.jpg 1x, ./img/SûrEtBon@2x.jpg 2x"
+                  alt="Album"
+                />
+              </figure>
+              <div class="card-body">
+                <div class="card-actions justify-end">
+                  <div class="badge badge-outline">Data Engineering</div>
+                  <div class="badge badge-outline">Web Development</div>
+                </div>
+                <h2 class="card-title">SûrEtBon</h2>
+                <p>
+                  SûrEtBon merges the results of official health checks on
+                  France's restaurants with their Google Maps and TripAdvisor
+                  ratings.
+                </p>
+                <div class="card-actions justify-center">
+                  <a
+                    class="btn btn-success"
+                    href="https://suretbon.fr/"
+                    target="_blank"
+                    >Website</a
+                  >
+                  <a
+                    class="btn btn-neutral"
+                    href="https://github.com/SurEtBon"
+                    target="_blank"
+                    >GitHub</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section
+        id="skills"
+        class="hero h-full"
+        style="
+          background-image: url(./img/skills_background.png);
+          background-image: image-set(
+            url(./img/skills_background.png) 1x,
+            url(./img/skills_background@2x.png) 2x
+          );
+        "
+      >
+        <div class="hero-overlay bg-opacity-60"></div>
+        <div class="hero-content select-none text-center text-neutral-content">
+          <div class="max-w-full">
+            <h1 class="mb-5 text-5xl font-bold">Skills</h1>
+            <h2 class="mb-2 text-xl">Scripting and Automation</h2>
+            <div class="badge">Bash</div>
+            <div class="badge">Python</div>
+            <div class="badge">Selenium</div>
+            <h2 class="mb-2 mt-4 text-xl">Web Development</h2>
+            <div class="badge">PHP</div>
+            <div class="badge">FastAPI</div>
+            <div class="badge">HTML5</div>
+            <div class="badge">CSS3</div>
+            <div class="badge">JavaScript</div>
+            <div class="badge">Streamlit</div>
+            <h2 class="mb-2 mt-4 text-xl">
+              Databases, Big Data and Orchestration
+            </h2>
+            <div class="badge">MySQL</div>
+            <div class="badge">Postgres</div>
+            <div class="badge">Apache Spark</div>
+            <div class="badge">Apache Airflow</div>
+            <h2 class="mb-2 mt-4 text-xl">DevOps & Cloud</h2>
+            <div class="badge">Docker</div>
+            <div class="badge">Kubernetes</div>
+            <div class="badge">GitHub Actions</div>
+            <div class="badge">Google Cloud Platform</div>
+            <h2 class="mb-2 mt-4 text-xl">Data Science & AI</h2>
+            <div class="badge">NumPy</div>
+            <div class="badge">Pandas</div>
+            <div class="badge">Matplotlib</div>
+            <div class="badge">scikit-learn</div>
+            <div class="badge">TensorFlow</div>
+            <div class="badge">Keras</div>
+            <div class="badge">MLflow</div>
+          </div>
+        </div>
+      </section>
+      <section
+        id="education"
+        class="hero h-full"
+        style="
+          background-image: url(./img/education_background.png);
+          background-image: image-set(
+            url(./img/education_background.png) 1x,
+            url(./img/education_background@2x.png) 2x
+          );
+        "
+      >
+        <div class="hero-overlay bg-opacity-60"></div>
+        <div class="hero-content select-none text-neutral-content">
+          <div class="max-w-xl">
+            <h1 class="mb-5 text-center text-5xl font-bold">Education</h1>
+            <ul
+              class="timeline timeline-vertical timeline-snap-icon max-md:timeline-compact"
+            >
+              <li>
+                <div class="timeline-middle">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    class="h-5 w-5"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </div>
+                <div class="timeline-start mb-10 md:text-end">
+                  <time class="font-mono italic">November 2024</time>
+                  <div class="text-lg font-black">
+                    Data Engineering Bootcamp
+                  </div>
+                  @ Le Wagon
+                </div>
+                <hr />
+              </li>
+              <li>
+                <hr />
+                <div class="timeline-middle">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    class="h-5 w-5"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </div>
+                <div class="timeline-end md:mb-10">
+                  <time class="font-mono italic">June 2024</time>
+                  <div class="text-lg font-black">
+                    Data Science & AI Bootcamp
+                  </div>
+                  @ Le Wagon
+                </div>
+                <hr />
+              </li>
+              <li>
+                <hr />
+                <div class="timeline-middle">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    class="h-5 w-5"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </div>
+                <div class="timeline-start mb-10 md:text-end">
+                  <time class="font-mono italic">June 2016</time>
+                  <div class="text-lg font-black">Web Development Bachelor</div>
+                  @SUPDEWEB
+                </div>
+                <hr />
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer
+      class="footer footer-center sticky bottom-0 rounded bg-base-200 p-10 text-base-content"
+    >
+      <nav class="grid grid-flow-col gap-4">
+        <a class="link-hover link select-none" href="#legal_notices"
+          >Legal Notices</a
+        >
+      </nav>
+      <nav>
+        <div class="grid grid-flow-col gap-4">
+          <a href="https://www.linkedin.com/in/jonathan-about/" target="_blank">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              class="fill-current"
+            >
+              <path
+                d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"
+              ></path>
+            </svg>
+          </a>
+          <a href="https://github.com/j-about" target="_blank">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              class="fill-current"
+            >
+              <path
+                d="M12.5.75C6.146.75 1 5.896 1 12.25c0 5.089 3.292 9.387 7.863 10.91.575.101.79-.244.79-.546 0-.273-.014-1.178-.014-2.142-2.889.532-3.636-.704-3.866-1.35-.13-.331-.69-1.352-1.18-1.625-.402-.216-.977-.748-.014-.762.906-.014 1.553.834 1.769 1.179 1.035 1.74 2.688 1.25 3.349.948.1-.747.402-1.25.733-1.538-2.559-.287-5.232-1.279-5.232-5.678 0-1.25.445-2.285 1.178-3.09-.115-.288-.517-1.467.115-3.048 0 0 .963-.302 3.163 1.179.92-.259 1.897-.388 2.875-.388.977 0 1.955.13 2.875.388 2.2-1.495 3.162-1.179 3.162-1.179.633 1.581.23 2.76.115 3.048.733.805 1.179 1.825 1.179 3.09 0 4.413-2.688 5.39-5.247 5.678.417.36.776 1.05.776 2.128 0 1.538-.014 2.774-.014 3.162 0 .302.216.662.79.547C20.709 21.637 24 17.324 24 12.25 24 5.896 18.854.75 12.5.75Z"
+              ></path>
+            </svg>
+          </a>
+          <a href="https://codepen.io/j_about" target="_blank">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 100 100"
+              class="fill-current"
+            >
+              <path
+                d="M100 34.2c-.4-2.6-3.3-4-5.3-5.3-3.6-2.4-7.1-4.7-10.7-7.1-8.5-5.7-17.1-11.4-25.6-17.1-2-1.3-4-2.7-6-4-1.4-1-3.3-1-4.8 0-5.7 3.8-11.5 7.7-17.2 11.5L5.2 29C3 30.4.1 31.8 0 34.8c-.1 3.3 0 6.7 0 10v16c0 2.9-.6 6.3 2.1 8.1 6.4 4.4 12.9 8.6 19.4 12.9 8 5.3 16 10.7 24 16 2.2 1.5 4.4 3.1 7.1 1.3 2.3-1.5 4.5-3 6.8-4.5 8.9-5.9 17.8-11.9 26.7-17.8l9.9-6.6c.6-.4 1.3-.8 1.9-1.3 1.4-1 2-2.4 2-4.1V37.3c.1-1.1.2-2.1.1-3.1 0-.1 0 .2 0 0zM54.3 12.3 88 34.8 73 44.9 54.3 32.4zm-8.6 0v20L27.1 44.8 12 34.8zM8.6 42.8 19.3 50 8.6 57.2zm37.1 44.9L12 65.2l15-10.1 18.6 12.5v20.1zM50 60.2 34.8 50 50 39.8 65.2 50zm4.3 27.5v-20l18.6-12.5 15 10.1zm37.1-30.5L80.7 50l10.8-7.2z"
+              ></path>
+            </svg>
+          </a>
+          <a href="https://knowledge.jonathan-about.com/" target="_blank">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 65 65"
+              class="fill-current"
+            >
+              <path
+                d="M27.3964 34.2196C30.5255 36.0256 32.09 36.9286 33.8083 36.9301C35.5265 36.9316 37.0926 36.0314 40.2249 34.2308L60.1914 22.7535C61.0927 22.2354 61.6484 21.275 61.6484 20.2353C61.6484 19.1956 61.0927 18.2352 60.1914 17.7171L40.2177 6.23561C37.0888 4.43703 35.5243 3.53774 33.8078 3.53841C32.0912 3.53908 30.5275 4.43959 27.4 6.24061L10.2293 16.1287C10.102 16.202 10.0384 16.2386 9.97907 16.2733C4.1137 19.7069 0.489885 25.9755 0.441431 32.7718C0.440941 32.8405 0.440941 32.9139 0.440941 33.0608C0.440941 33.2075 0.440941 33.2808 0.44143 33.3494C0.489777 40.1381 4.10551 46.4008 9.96043 49.8371C10.0196 49.8719 10.0831 49.9085 10.2102 49.9819L20.9659 56.1919C27.2332 59.8105 30.3668 61.6197 33.8081 61.6209C37.2493 61.6221 40.3842 59.8149 46.6539 56.2006L58.008 49.6552C61.1474 47.8454 62.7171 46.9406 63.579 45.4488C64.4409 43.957 64.4409 42.1452 64.4409 38.5215V31.5213C64.4409 30.516 63.8965 29.5896 63.0182 29.1004C62.1683 28.6271 61.1325 28.6341 60.2891 29.1189L37.0074 42.5019C35.4454 43.3999 34.6643 43.8488 33.8072 43.8491C32.9502 43.8493 32.1689 43.4008 30.6063 42.5039L14.8487 33.4587C14.0594 33.0056 13.6647 32.779 13.3477 32.7381C12.625 32.6449 11.9301 33.0497 11.6548 33.7244C11.5341 34.0204 11.5365 34.4754 11.5414 35.3855C11.545 36.0556 11.5468 36.3906 11.6094 36.6987C11.7497 37.3888 12.1127 38.0137 12.6428 38.4772C12.8795 38.6842 13.1696 38.8517 13.7499 39.1866L30.5974 48.9103C32.1641 49.8145 32.9474 50.2666 33.8075 50.2669C34.6677 50.2671 35.4513 49.8154 37.0184 48.9121L57.6684 37.0086C58.2037 36.7 58.4714 36.5458 58.6721 36.6617C58.8727 36.7777 58.8727 37.0866 58.8727 37.7045V40.8796C58.8727 41.7856 58.8727 42.2385 58.6572 42.6115C58.4417 42.9844 58.0493 43.2107 57.2644 43.6631L40.2322 53.4811C37.0966 55.2886 35.5288 56.1923 33.8079 56.1915C32.0869 56.1908 30.5199 55.2856 27.386 53.4752L11.4509 44.2702C11.4003 44.2409 11.375 44.2263 11.3514 44.2125C8.01023 42.2601 5.94859 38.6883 5.92925 34.8185C5.92911 34.7912 5.92911 34.762 5.92911 34.7035V31.7889C5.92911 29.6526 7.06688 27.6781 8.91512 26.6068C10.5483 25.6601 12.5628 25.6582 14.1977 26.6019L27.3964 34.2196Z"
+              />
+            </svg>
+          </a>
+          <a href="https://x.com/JonathanAbout" target="_blank">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              class="fill-current"
+            >
+              <path
+                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+              ></path>
+            </svg>
+          </a>
+          <a href="tel:+33183644580" target="_blank">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              class="fill-current"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"
+              />
+            </svg>
+          </a>
+          <a href="https://wa.me/message/AMR3AYZ6HBKIN1" target="_blank">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 31 30"
+              class="fill-current"
+            >
+              <title id="whatsapp-logo">WhatsApp logo</title>
+              <path
+                d="M15.565 0C7.057 0 .133 6.669.13 14.865c-.002 2.621.71 5.179 2.06 7.432L0 30l8.183-2.067a15.89 15.89 0 007.376 1.81h.006c8.508 0 15.432-6.67 15.435-14.866.002-3.97-1.602-7.707-4.517-10.516C23.569 1.551 19.694.001 15.565 0zm0 27.232h-.005c-2.302 0-4.56-.596-6.53-1.722l-.47-.268-4.854 1.226 1.296-4.56-.305-.467a11.983 11.983 0 01-1.962-6.576C2.738 8.052 8.494 2.511 15.57 2.511c3.426.001 6.647 1.288 9.07 3.623s3.756 5.44 3.754 8.742c-.003 6.813-5.758 12.356-12.83 12.356zm7.037-9.255c-.386-.185-2.282-1.084-2.636-1.209-.353-.123-.61-.187-.867.185-.256.372-.996 1.209-1.22 1.456-.226.248-.451.278-.837.093-.386-.186-1.629-.578-3.101-1.844-1.147-.984-1.921-2.2-2.146-2.573-.225-.371-.024-.572.169-.757.173-.165.386-.433.578-.65.192-.217.256-.372.386-.62.128-.247.064-.465-.033-.65-.097-.187-.867-2.015-1.19-2.758-.312-.724-.63-.627-.867-.639-.225-.01-.481-.013-.74-.013-.255 0-.674.093-1.028.465-.353.372-1.35 1.27-1.35 3.098 0 1.829 1.382 3.595 1.575 3.843.193.247 2.72 4 6.589 5.61.92.381 1.638.61 2.199.782.924.283 1.765.242 2.429.147.74-.107 2.282-.898 2.602-1.765.322-.867.322-1.611.226-1.766-.094-.155-.352-.248-.738-.435z"
+              ></path>
+            </svg>
+          </a>
+          <a href="mailto:contact@jonathan-about.com" target="_blank">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M16.5 12a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 1 0-2.636 6.364M16.5 12V8.25"
+              />
+            </svg>
+          </a>
+        </div>
+      </nav>
+      <aside>
+        <p class="select-none">Jonathan About © 2025</p>
+      </aside>
+    </footer>
+    <dialog id="legal_notices" class="modal">
+      <div class="modal-box">
+        <h3 class="text-lg font-bold">Legal Notices</h3>
+        <h4 class="py-4 font-bold">Owner</h4>
+        <ul>
+          <li class="font-bold">EI - ABOUT JONATHAN</li>
+          <li>835 137 456 R.C.S. Paris</li>
+          <li>11 rue du Faubourg Saint-Martin, 75010 Paris, France</li>
+          <li>
+            <a href="mailto:contact@jonathan-about.com" target="_blank"
+              >contact@jonathan-about.com</a
+            >
+          </li>
+          <li>
+            <a href="tel:+33183644580" target="_blank">+33 1 83 64 45 80</a>
+          </li>
+        </ul>
+        <h4 class="py-4 font-bold">Host</h4>
+        <ul>
+          <li class="font-bold">OVH</li>
+          <li>2 rue Kellermann, 59100 Roubaix, France</li>
+          <li>
+            <a href="tel:+33972101007" target="_blank">+33 9 72 10 10 07</a>
+          </li>
+        </ul>
+        <div class="modal-action">
+          <a class="btn" href="#">Close</a>
+        </div>
+      </div>
+    </dialog>
   </body>
 </html>
