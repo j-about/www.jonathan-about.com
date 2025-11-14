@@ -1,0 +1,190 @@
+@import "tailwindcss";
+
+/* Custom fonts */
+@font-face {
+  font-family: "Miltown";
+  src: url("/fonts/miltown-regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  /* Red Pill Theme (Default) - Matrix Green */
+  --color-matrix-green-bright: oklch(0.84 0.18 140);
+  --color-matrix-green: oklch(0.7 0.15 140);
+  --color-matrix-green-dim: oklch(0.5 0.12 140);
+  --color-matrix-green-darker: oklch(0.3 0.08 140);
+  --color-matrix-black: oklch(0.1 0.02 140);
+  --color-matrix-black-pure: #000000;
+
+  /* Blue Pill Theme - Complementary Cyan */
+  --color-blue-pill-cyan-bright: oklch(0.85 0.12 210);
+  --color-blue-pill-cyan: oklch(0.7 0.1 210);
+  --color-blue-pill-cyan-dim: oklch(0.5 0.08 210);
+  --color-blue-pill-cyan-darker: oklch(0.3 0.05 210);
+  --color-blue-pill-beige: oklch(0.92 0.02 80);
+  --color-blue-pill-white: oklch(0.98 0 0);
+
+  /* Font families */
+  --font-mono: "Courier New", Courier, monospace;
+  --font-family-miltown: "Miltown", sans-serif;
+
+  /* Font sizes */
+  --font-size-responsive-hero: clamp(1.5rem, 6vw, 4rem);
+
+  /* Border radius */
+  --radius-sm: 0.125rem;
+}
+
+/* Custom utilities */
+@utility crt-glow {
+  text-shadow:
+    0 0 5px currentColor,
+    0 0 10px currentColor,
+    0 0 20px currentColor;
+}
+
+@utility crt-glow-subtle {
+  text-shadow:
+    0 0 3px currentColor,
+    0 0 6px currentColor;
+}
+
+@utility scan-lines {
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+}
+
+/* Corner decorations removed - using simple borders */
+
+html {
+  font-family: var(--font-mono);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--color-matrix-black-pure);
+  color: var(--color-matrix-green);
+  overflow-x: hidden;
+}
+
+/* Red Pill Theme (Default) */
+:root {
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--color-matrix-black-pure);
+  color: var(--color-matrix-green);
+}
+
+/* Blue Pill Theme - Light Mode */
+.blue-pill {
+  color-scheme: light;
+}
+
+.blue-pill body {
+  background-color: var(--color-blue-pill-white);
+  color: oklch(0.3 0.05 210); /* Dark cyan for text */
+}
+
+.blue-pill .scan-lines {
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.03),
+    rgba(0, 0, 0, 0.03) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+}
+
+/* CRT flicker animation */
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.97;
+  }
+}
+
+.crt-flicker {
+  animation: flicker 8s infinite;
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--color-matrix-green-bright);
+  outline-offset: 2px;
+}
+
+.blue-pill *:focus-visible {
+  outline-color: var(--color-blue-pill-cyan-bright);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .crt-flicker {
+    animation: none;
+  }
+}
+
+/* Custom scrollbar (Red Pill) */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-matrix-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-matrix-green-darker);
+  border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-matrix-green-dim);
+}
+
+/* Custom scrollbar (Blue Pill) */
+.blue-pill ::-webkit-scrollbar-track {
+  background: var(--color-blue-pill-white);
+}
+
+.blue-pill ::-webkit-scrollbar-thumb {
+  background: var(--color-blue-pill-cyan-darker);
+}
+
+.blue-pill ::-webkit-scrollbar-thumb:hover {
+  background: var(--color-blue-pill-cyan-dim);
+}
+
+/* Selection styles */
+::selection {
+  background-color: var(--color-matrix-green);
+  color: var(--color-matrix-black-pure);
+}
+
+.blue-pill ::selection {
+  background-color: var(--color-blue-pill-cyan);
+  color: var(--color-blue-pill-white);
+}
