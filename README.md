@@ -139,9 +139,9 @@ The website serves as both to showcase skills, projects, education, and contact 
 
 | Technology     | Version | Purpose                                                           |
 | -------------- | ------- | ----------------------------------------------------------------- |
-| **Next.js**    | 16.0.3  | React framework with App Router, Server Components, Static Export |
-| **React**      | 19.2.0  | UI library with latest concurrent features                        |
-| **React DOM**  | 19.2.0  | React renderer for web                                            |
+| **Next.js**    | 16.0.7  | React framework with App Router, Server Components, Static Export |
+| **React**      | 19.2.1  | UI library with latest concurrent features                        |
+| **React DOM**  | 19.2.1  | React renderer for web                                            |
 | **TypeScript** | 5.9.3   | Type-safe JavaScript with strict mode                             |
 | **Node.js**    | 24.11.1 | JavaScript runtime (Docker: node:24.11.1-alpine)                  |
 
@@ -149,9 +149,9 @@ The website serves as both to showcase skills, projects, education, and contact 
 
 | Technology             | Version  | Purpose                                      |
 | ---------------------- | -------- | -------------------------------------------- |
-| **Three.js**           | 0.181.1  | WebGL library for 3D graphics rendering      |
-| **@react-three/fiber** | 9.4.0    | React renderer for Three.js (declarative 3D) |
-| **Framer Motion**      | 12.23.24 | Production-ready animation library           |
+| **Three.js**           | 0.181.2  | WebGL library for 3D graphics rendering      |
+| **@react-three/fiber** | 9.4.2    | React renderer for Three.js (declarative 3D) |
+| **Framer Motion**      | 12.23.25 | Production-ready animation library           |
 
 ### Styling
 
@@ -166,14 +166,14 @@ The website serves as both to showcase skills, projects, education, and contact 
 | Technology            | Version | Purpose                                        |
 | --------------------- | ------- | ---------------------------------------------- |
 | **ESLint**            | 9.39.1  | JavaScript/TypeScript linting with flat config |
-| **Prettier**          | 3.6.2   | Code formatter with Tailwind plugin            |
+| **Prettier**          | 3.7.4   | Code formatter with Tailwind plugin            |
 | **ttf2woff2**         | 8.0.0   | Font conversion (TTF → WOFF2)                  |
-| **TypeScript ESLint** | 8.46.4  | TypeScript-specific ESLint rules               |
+| **TypeScript ESLint** | 8.48.1  | TypeScript-specific ESLint rules               |
 
 ### Type Definitions
 
 - `@types/node@24.10.1` - Node.js type definitions
-- `@types/react@19.2.4` - React type definitions
+- `@types/react@19.2.7` - React type definitions
 - `@types/react-dom@19.2.3` - React DOM type definitions
 - `@types/three@0.181.0` - Three.js type definitions
 
