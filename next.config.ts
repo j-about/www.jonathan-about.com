@@ -122,20 +122,22 @@ const nextConfig: NextConfig = {
             value: [
               // Default: only same origin
               "default-src 'self'",
-              // Scripts: self + unsafe-eval (required for Three.js WebGL shaders) + unsafe-inline (for Next.js)
-              "script-src 'self' 'unsafe-eval' 'unsafe-inline'",
+              // Scripts: self + unsafe-eval (required for Three.js WebGL shaders) + unsafe-inline (for Next.js) + GTM
+              "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://tagmanager.google.com",
               // Styles: self + unsafe-inline (required for Framer Motion, Tailwind, styled-jsx)
               "style-src 'self' 'unsafe-inline'",
-              // Images: self + data URIs + blob URIs (for canvas/WebGL operations)
-              "img-src 'self' data: blob:",
+              // Images: self + data URIs + blob URIs (for canvas/WebGL operations) + GTM/GA tracking pixels
+              "img-src 'self' data: blob: https://www.googletagmanager.com https://www.google-analytics.com",
               // Fonts: self + data URIs (all fonts self-hosted as WOFF2)
               "font-src 'self' data:",
-              // Connect: self (for API calls)
-              "connect-src 'self'",
+              // Connect: self (for API calls) + GA/GTM for beacons and data collection
+              "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com",
               // Media: none (no audio/video elements in current implementation)
               "media-src 'none'",
               // Objects: none (no Flash, Java, etc.)
               "object-src 'none'",
+              // Frames: GTM preview mode
+              "frame-src https://www.googletagmanager.com",
               // Frame ancestors: self only (prevents embedding except same origin)
               "frame-ancestors 'self'",
               // Base URI: self only

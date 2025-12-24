@@ -2,8 +2,8 @@
 
 > **"The Matrix has you..."** - A cyberpunk-themed website showcasing software engineering expertise through an immersive Matrix-inspired experience.
 
-[![Node.js Version](https://img.shields.io/badge/node-24.11.1-green.svg)](https://nodejs.org)
-[![Next.js](https://img.shields.io/badge/Next.js-16.0.3-black.svg)](https://nextjs.org)
+[![Node.js Version](https://img.shields.io/badge/node-24.12.0-green.svg)](https://nodejs.org)
+[![Next.js](https://img.shields.io/badge/Next.js-16.1.1-black.svg)](https://nextjs.org)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9.3-blue.svg)](https://www.typescriptlang.org)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
@@ -20,6 +20,7 @@
 - [Getting Started](#-getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
+  - [Environment Variables](#environment-variables)
   - [Development Server](#development-server)
 - [Project Structure](#-project-structure)
 - [Development](#-development)
@@ -131,51 +132,58 @@ The website serves as both to showcase skills, projects, education, and contact 
 - **Crawl optimization**: Guides search engine bots for efficient indexing
 - **Cached by default**: Special Route Handlers cached for performance
 
+### 📊 Analytics Integration
+
+- **Google Tag Manager (GTM)**: Container-based tag management for analytics, marketing pixels, and tracking
+- **Environment-driven**: GTM ID configured via `NEXT_PUBLIC_GTM_ID` environment variable
+- **Privacy-conscious**: No tracking without explicit GTM configuration
+- **CSP-compliant**: All required GTM/GA domains whitelisted in security headers
+
 ---
 
 ## 🛠️ Technology Stack
 
 ### Core Framework
 
-| Technology     | Version | Purpose                                                           |
-| -------------- | ------- | ----------------------------------------------------------------- |
-| **Next.js**    | 16.0.7  | React framework with App Router, Server Components, Static Export |
-| **React**      | 19.2.1  | UI library with latest concurrent features                        |
-| **React DOM**  | 19.2.1  | React renderer for web                                            |
-| **TypeScript** | 5.9.3   | Type-safe JavaScript with strict mode                             |
-| **Node.js**    | 24.11.1 | JavaScript runtime (Docker: node:24.11.1-alpine)                  |
+| Technology     | Version   | Purpose                                                           |
+| -------------- | --------- | ----------------------------------------------------------------- |
+| **Next.js**    | 16.1.1    | React framework with App Router, Server Components, Static Export |
+| **React**      | 19.2.3    | UI library with latest concurrent features                        |
+| **React DOM**  | 19.2.3    | React renderer for web                                            |
+| **TypeScript** | 5.9.3     | Type-safe JavaScript with strict mode                             |
+| **Node.js**    | >=24.12.0 | JavaScript runtime (Docker: node:24.12.0-alpine)                  |
 
 ### 3D Graphics & Animation
 
-| Technology             | Version  | Purpose                                      |
-| ---------------------- | -------- | -------------------------------------------- |
-| **Three.js**           | 0.181.2  | WebGL library for 3D graphics rendering      |
-| **@react-three/fiber** | 9.4.2    | React renderer for Three.js (declarative 3D) |
-| **Framer Motion**      | 12.23.25 | Production-ready animation library           |
+| Technology             | Version   | Purpose                                      |
+| ---------------------- | --------- | -------------------------------------------- |
+| **Three.js**           | 0.182.0   | WebGL library for 3D graphics rendering      |
+| **@react-three/fiber** | 9.4.2     | React renderer for Three.js (declarative 3D) |
+| **Framer Motion**      | 12.23.26  | Production-ready animation library           |
 
 ### Styling
 
 | Technology       | Version | Purpose                                                  |
 | ---------------- | ------- | -------------------------------------------------------- |
-| **Tailwind CSS** | 4.1.17  | Utility-first CSS framework with v4 @theme directive     |
-| **PostCSS**      | 4.1.17  | CSS transformation via @tailwindcss/postcss              |
+| **Tailwind CSS** | 4.1.18  | Utility-first CSS framework with v4 @theme directive     |
+| **PostCSS**      | 4.1.18  | CSS transformation via @tailwindcss/postcss              |
 | **Custom CSS**   | -       | Design tokens, CRT effects, scan lines, custom utilities |
 
 ### Development Tools
 
 | Technology            | Version | Purpose                                        |
 | --------------------- | ------- | ---------------------------------------------- |
-| **ESLint**            | 9.39.1  | JavaScript/TypeScript linting with flat config |
+| **ESLint**            | 9.39.2  | JavaScript/TypeScript linting with flat config |
 | **Prettier**          | 3.7.4   | Code formatter with Tailwind plugin            |
 | **ttf2woff2**         | 8.0.0   | Font conversion (TTF → WOFF2)                  |
-| **TypeScript ESLint** | 8.48.1  | TypeScript-specific ESLint rules               |
+| **TypeScript ESLint** | 8.50.1  | TypeScript-specific ESLint rules               |
 
 ### Type Definitions
 
 - `@types/node@24.10.1` - Node.js type definitions
 - `@types/react@19.2.7` - React type definitions
 - `@types/react-dom@19.2.3` - React DOM type definitions
-- `@types/three@0.181.0` - Three.js type definitions
+- `@types/three@0.182.0` - Three.js type definitions
 
 ### Audio
 
@@ -309,7 +317,7 @@ AudioContextManager (Singleton)
 
 Before you begin, ensure you have the following installed:
 
-- **Node.js**: 24.11.1 or higher ([Download](https://nodejs.org))
+- **Node.js**: 24.12.0 or higher ([Download](https://nodejs.org))
   - Verify: `node --version`
 - **npm**: Comes with Node.js (or use pnpm/yarn)
   - Verify: `npm --version`
@@ -350,6 +358,22 @@ Before you begin, ensure you have the following installed:
    ```
 
    This converts the custom Miltown font from TTF to WOFF2 format. This step runs automatically before `dev` and `build` scripts via pre-hooks.
+
+### Environment Variables
+
+1. **Copy the environment template:**
+
+   ```bash
+   cp .env.example .env.local
+   ```
+
+2. **Configure variables:**
+
+   | Variable | Description | Required |
+   |----------|-------------|----------|
+   | `NEXT_PUBLIC_GTM_ID` | Google Tag Manager container ID (format: `GTM-XXXXXXXX`) | No (analytics disabled if unset) |
+
+   Get your GTM container ID from [tagmanager.google.com](https://tagmanager.google.com/).
 
 ### Development Server
 
@@ -424,8 +448,9 @@ www.jonathan-about.com/
 │   └── icon.jpg                             # Site icon (512×512)
 ├── fonts-src/                               # Source font files (TTF)
 │   └── miltown-regular.ttf                  # Original font file
+├── .env.example                             # Environment variables template
 ├── .gitignore                               # Git ignore rules
-├── .node-version                            # Node.js version (24.11.1)
+├── .node-version                            # Node.js version (>=24.12.0)
 ├── .prettierignore                          # Prettier ignore rules
 ├── Dockerfile                               # Multi-stage Docker build configuration
 ├── eslint.config.mjs                        # ESLint flat config
@@ -1240,7 +1265,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 **Docker Optimizations:**
 
-- **Base image:** Alpine Linux (node:24.11.1-alpine) for minimal size (~50MB vs ~900MB full Node image)
+- **Base image:** Alpine Linux (node:24.12.0-alpine) for minimal size (~50MB vs ~900MB full Node image)
 - **Standalone output:** Next.js standalone mode reduces bundle size by ~80%
 - **Layer caching:** Dependencies cached separately from source code for faster rebuilds
 - **Non-root user:** Runs as `nextjs:nodejs` user for security
@@ -1274,19 +1299,19 @@ docker run -d -p 3000:3000 --name jonathan-about jonathan-about-website
 **Multi-stage Build:**
 
 ```dockerfile
-FROM node:24.11.1-alpine AS deps
+FROM node:24.12.0-alpine AS deps
 # Install production dependencies
 
-FROM node:24.11.1-alpine AS builder
+FROM node:24.12.0-alpine AS builder
 # Build Next.js standalone output
 
-FROM node:24.11.1-alpine AS runner
+FROM node:24.12.0-alpine AS runner
 # Minimal production image
 ```
 
 **Image Specifications:**
 
-- **Base:** node:24.11.1-alpine (~50MB)
+- **Base:** node:24.12.0-alpine (~50MB)
 - **Final size:** ~300-400MB (vs ~900MB+ without optimization)
 - **User:** Non-root (nextjs:nodejs)
 - **Port:** 3000
@@ -1415,13 +1440,14 @@ headers: async () => [
         key: "Content-Security-Policy",
         value: `
           default-src 'self';
-          script-src 'self' 'unsafe-eval' 'unsafe-inline';
+          script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://tagmanager.google.com;
           style-src 'self' 'unsafe-inline';
-          img-src 'self' data: blob:;
+          img-src 'self' data: blob: https://www.googletagmanager.com https://www.google-analytics.com;
           font-src 'self' data:;
-          connect-src 'self';
+          connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com;
           media-src 'none';
           object-src 'none';
+          frame-src https://www.googletagmanager.com;
           frame-ancestors 'self';
           base-uri 'self';
           form-action 'self';
@@ -1453,26 +1479,27 @@ headers: async () => [
 | Directive                   | Value                                  | Reason                                                            |
 | --------------------------- | -------------------------------------- | ----------------------------------------------------------------- |
 | `default-src`               | `'self'`                               | Only load resources from same origin by default                   |
-| `script-src`                | `'self' 'unsafe-eval' 'unsafe-inline'` | Allow scripts from same origin + eval (Three.js shaders) + inline |
+| `script-src`                | `'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://tagmanager.google.com` | Allow scripts from same origin + eval (Three.js shaders) + inline + GTM |
 | `style-src`                 | `'self' 'unsafe-inline'`               | Allow styles from same origin + inline (Tailwind, Framer Motion)  |
-| `img-src`                   | `'self' data: blob:`                   | Allow images from same origin + data URIs + blob URLs             |
+| `img-src`                   | `'self' data: blob: https://www.googletagmanager.com https://www.google-analytics.com` | Allow images from same origin + data URIs + blob URLs + GTM/GA tracking pixels |
 | `font-src`                  | `'self' data:`                         | Allow fonts from same origin + data URIs                          |
-| `connect-src`               | `'self'`                               | Only allow fetch/XHR to same origin                               |
+| `connect-src`               | `'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com` | Allow fetch/XHR to same origin + GA/GTM data collection |
 | `media-src`                 | `'none'`                               | Block audio/video elements (not used)                             |
 | `object-src`                | `'none'`                               | Block plugins (Flash, Java, etc.)                                 |
+| `frame-src`                 | `https://www.googletagmanager.com`     | Allow GTM preview mode iframe                                     |
 | `frame-ancestors`           | `'self'`                               | Only allow framing by same origin                                 |
 | `base-uri`                  | `'self'`                               | Restrict `<base>` tag to same origin                              |
 | `form-action`               | `'self'`                               | Only allow form submissions to same origin                        |
 | `upgrade-insecure-requests` | (no value)                             | Auto-upgrade HTTP→HTTPS requests                                  |
 
-**Note:** `unsafe-eval` is required for Three.js shader compilation. `unsafe-inline` is required for Framer Motion and Tailwind CSS. In a future version, these could be removed with a more restrictive CSP and nonces.
+**Note:** `unsafe-eval` is required for Three.js shader compilation. `unsafe-inline` is required for Framer Motion and Tailwind CSS. GTM/GA domains are whitelisted for analytics tracking. In a future version, these could be removed with a more restrictive CSP and nonces.
 
 ### Additional Security Measures
 
 1. **Self-Hosted Assets:**
-   - All fonts, images, scripts served from same domain
-   - No external CDN dependencies (Google Fonts, etc.)
-   - Reduces third-party tracking and dependency risks
+   - All fonts, images, core scripts served from same domain
+   - No external CDN dependencies for core functionality (Google Fonts, etc.)
+   - Optional GTM/GA integration for analytics (disabled by default)
 
 2. **No External API Calls:**
    - Fully static site (no backend)

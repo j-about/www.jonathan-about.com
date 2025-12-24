@@ -1,6 +1,6 @@
 {
   "name": "www.jonathan-about.com",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "private": true,
   "description": "Jonathan About | Software Engineer Website",
@@ -20,34 +20,34 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,css,md}\" --log-level warn"
   },
   "dependencies": {
-    "@react-three/fiber": "9.4.2",
-    "framer-motion": "12.23.25",
-    "next": "16.0.7",
-    "react": "19.2.1",
-    "react-dom": "19.2.1",
-    "three": "0.181.2"
+    "@react-three/fiber": "^9.4.2",
+    "framer-motion": "^12.23.26",
+    "next": "^16.1.1",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "three": "^0.182.0"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "3.3.3",
-    "@eslint/js": "9.39.1",
-    "@next/eslint-plugin-next": "16.0.7",
-    "@tailwindcss/postcss": "4.1.17",
-    "@types/node": "24.10.1",
-    "@types/react": "19.2.7",
-    "@types/react-dom": "19.2.3",
-    "@types/three": "0.181.0",
-    "eslint": "9.39.1",
-    "eslint-config-next": "16.0.7",
-    "eslint-plugin-react": "7.37.5",
-    "eslint-plugin-react-hooks": "7.0.1",
-    "prettier": "3.7.4",
-    "prettier-plugin-tailwindcss": "0.7.2",
-    "tailwindcss": "4.1.17",
-    "ttf2woff2": "8.0.0",
-    "typescript": "5.9.3",
-    "typescript-eslint": "8.48.1"
+    "@eslint/eslintrc": "^3.3.3",
+    "@eslint/js": "^9.39.2",
+    "@next/eslint-plugin-next": "^16.1.1",
+    "@tailwindcss/postcss": "^4.1.18",
+    "@types/node": "^24.10.1",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@types/three": "^0.182.0",
+    "eslint": "^9.39.2",
+    "eslint-config-next": "^16.1.1",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "prettier": "^3.7.4",
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "tailwindcss": "^4.1.18",
+    "ttf2woff2": "^8.0.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.50.1"
   },
   "engines": {
-    "node": "24.11.1"
+    "node": ">=24.12.0"
   }
 }
