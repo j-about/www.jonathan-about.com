@@ -128,6 +128,7 @@ The website serves as both to showcase skills, projects, education, and contact 
 
 - **Dynamic robots.txt**: Programmatically generated via `robots.ts` (Next.js special Route Handler)
 - **XML sitemap**: Auto-generated sitemap with metadata (lastModified, changeFrequency, priority)
+- **Configurable base URL**: `NEXT_PUBLIC_BASE_URL` environment variable for canonical URLs in metadata, sitemaps, and OpenGraph tags
 - **Standards compliant**: Follows Robots Exclusion Standard and Sitemaps XML format
 - **Crawl optimization**: Guides search engine bots for efficient indexing
 - **Cached by default**: Special Route Handlers cached for performance
@@ -371,6 +372,7 @@ Before you begin, ensure you have the following installed:
 
    | Variable | Description | Required |
    |----------|-------------|----------|
+   | `NEXT_PUBLIC_BASE_URL` | Canonical base URL of the application (e.g., `https://www.jonathan-about.com`). Used for SEO metadata, sitemaps, and OpenGraph tags. | No (defaults to `http://localhost:3000`) |
    | `NEXT_PUBLIC_GTM_ID` | Google Tag Manager container ID (format: `GTM-XXXXXXXX`) | No (analytics disabled if unset) |
 
    Get your GTM container ID from [tagmanager.google.com](https://tagmanager.google.com/).

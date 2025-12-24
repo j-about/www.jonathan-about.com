@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://www.jonathan-about.com/sitemap.xml",
+    sitemap: (process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000") + "/sitemap.xml",
   };
 }

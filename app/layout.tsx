@@ -7,6 +7,9 @@ import "./globals.css";
 const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000",
+  ),
   title: "Jonathan About | Software Engineer",
   description:
     "Jonathan About ~ Software Engineer ~ Data/MLOps Engineering · Web Development. Skills, projects, education and connect.",
@@ -20,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://www.jonathan-about.com",
+    url: process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000",
     title: "Jonathan About | Software Engineer",
     description:
       "Jonathan About ~ Software Engineer ~ Data/MLOps Engineering · Web Development. Skills, projects, education and connect.",
