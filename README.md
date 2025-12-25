@@ -138,7 +138,8 @@ The website serves as both to showcase skills, projects, education, and contact 
 - **Google Tag Manager (GTM)**: Container-based tag management for analytics, marketing pixels, and tracking
 - **Environment-driven**: GTM ID configured via `NEXT_PUBLIC_GTM_ID` environment variable
 - **Privacy-conscious**: No tracking without explicit GTM configuration
-- **CSP-compliant**: All required GTM/GA domains whitelisted in security headers
+- **CSP-compliant**: Dynamic CSP with GTM domains conditionally added; extensible via `NEXT_PUBLIC_CSP_*` environment variables
+- **Reference**: [Google Tag Platform CSP Guide](https://developers.google.com/tag-platform/security/guides/csp)
 
 ---
 
@@ -156,11 +157,11 @@ The website serves as both to showcase skills, projects, education, and contact 
 
 ### 3D Graphics & Animation
 
-| Technology             | Version   | Purpose                                      |
-| ---------------------- | --------- | -------------------------------------------- |
-| **Three.js**           | 0.182.0   | WebGL library for 3D graphics rendering      |
-| **@react-three/fiber** | 9.4.2     | React renderer for Three.js (declarative 3D) |
-| **Framer Motion**      | 12.23.26  | Production-ready animation library           |
+| Technology             | Version  | Purpose                                      |
+| ---------------------- | -------- | -------------------------------------------- |
+| **Three.js**           | 0.182.0  | WebGL library for 3D graphics rendering      |
+| **@react-three/fiber** | 9.4.2    | React renderer for Three.js (declarative 3D) |
+| **Framer Motion**      | 12.23.26 | Production-ready animation library           |
 
 ### Styling
 
@@ -370,12 +371,20 @@ Before you begin, ensure you have the following installed:
 
 2. **Configure variables:**
 
-   | Variable | Description | Required |
-   |----------|-------------|----------|
-   | `NEXT_PUBLIC_BASE_URL` | Canonical base URL of the application (e.g., `https://www.jonathan-about.com`). Used for SEO metadata, sitemaps, and OpenGraph tags. | No (defaults to `http://localhost:3000`) |
-   | `NEXT_PUBLIC_GTM_ID` | Google Tag Manager container ID (format: `GTM-XXXXXXXX`) | No (analytics disabled if unset) |
+   | Variable                      | Description                                                                                                                          | Required                                 |
+   | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------- |
+   | `NEXT_PUBLIC_BASE_URL`        | Canonical base URL of the application (e.g., `https://www.jonathan-about.com`). Used for SEO metadata, sitemaps, and OpenGraph tags. | No (defaults to `http://localhost:3000`) |
+   | `NEXT_PUBLIC_GTM_ID`          | Google Tag Manager container ID (format: `GTM-XXXXXXXX`)                                                                             | No (analytics disabled if unset)         |
+   | `NEXT_PUBLIC_CSP_CONNECT_SRC` | Additional CSP connect-src domains (space-separated)                                                                                 | No                                       |
+   | `NEXT_PUBLIC_CSP_FONT_SRC`    | Additional CSP font-src domains (space-separated)                                                                                    | No                                       |
+   | `NEXT_PUBLIC_CSP_FRAME_SRC`   | Additional CSP frame-src domains (space-separated)                                                                                   | No                                       |
+   | `NEXT_PUBLIC_CSP_IMG_SRC`     | Additional CSP img-src domains (space-separated)                                                                                     | No                                       |
+   | `NEXT_PUBLIC_CSP_SCRIPT_SRC`  | Additional CSP script-src domains (space-separated).                                                                                 | No                                       |
+   | `NEXT_PUBLIC_CSP_STYLE_SRC`   | Additional CSP style-src domains (space-separated)                                                                                   | No                                       |
 
    Get your GTM container ID from [tagmanager.google.com](https://tagmanager.google.com/).
+
+   For CSP extensions when using Google services via GTM, refer to [Google's CSP documentation](https://developers.google.com/tag-platform/security/guides/csp).
 
 ### Development Server
 
@@ -788,15 +797,15 @@ Full keyboard control for accessibility and power users.
 
 #### Keyboard Shortcuts
 
-| Key           | Action                | Description                          |
-| ------------- | --------------------- | ------------------------------------ |
-| **1**         | Navigate to Skills    | Jump to Skills section               |
-| **2**         | Navigate to Projects  | Jump to Projects section             |
-| **3**         | Navigate to Education | Jump to Education section            |
-| **4**         | Navigate to Connect   | Jump to Connect section              |
+| Key           | Action                | Description                         |
+| ------------- | --------------------- | ----------------------------------- |
+| **1**         | Navigate to Skills    | Jump to Skills section              |
+| **2**         | Navigate to Projects  | Jump to Projects section            |
+| **3**         | Navigate to Education | Jump to Education section           |
+| **4**         | Navigate to Connect   | Jump to Connect section             |
 | **P**         | Toggle Theme          | Switch between Red Pill ↔ Blue Pill |
-| **Tab**       | Next Element          | Focus next interactive element       |
-| **Shift+Tab** | Previous Element      | Focus previous interactive element   |
+| **Tab**       | Next Element          | Focus next interactive element      |
+| **Shift+Tab** | Previous Element      | Focus previous interactive element  |
 
 #### Implementation
 
@@ -1403,98 +1412,52 @@ FROM node:24.12.0-alpine AS runner
 
 ### Security Headers
 
-Comprehensive security headers configured in [next.config.ts](next.config.ts):
+Comprehensive security headers configured in [next.config.ts](next.config.ts). The Content Security Policy (CSP) is dynamically built based on environment configuration.
 
-```typescript
-headers: async () => [
-  {
-    source: "/:path*",
-    headers: [
-      {
-        key: "X-DNS-Prefetch-Control",
-        value: "on",
-      },
-      {
-        key: "Strict-Transport-Security",
-        value: "max-age=63072000; includeSubDomains; preload",
-      },
-      {
-        key: "X-Frame-Options",
-        value: "SAMEORIGIN",
-      },
-      {
-        key: "X-Content-Type-Options",
-        value: "nosniff",
-      },
-      {
-        key: "X-XSS-Protection",
-        value: "1; mode=block",
-      },
-      {
-        key: "Referrer-Policy",
-        value: "strict-origin-when-cross-origin",
-      },
-      {
-        key: "Permissions-Policy",
-        value: "camera=(), microphone=(), geolocation=(), interest-cohort=()",
-      },
-      {
-        key: "Content-Security-Policy",
-        value: `
-          default-src 'self';
-          script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://tagmanager.google.com;
-          style-src 'self' 'unsafe-inline';
-          img-src 'self' data: blob: https://www.googletagmanager.com https://www.google-analytics.com;
-          font-src 'self' data:;
-          connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com;
-          media-src 'none';
-          object-src 'none';
-          frame-src https://www.googletagmanager.com;
-          frame-ancestors 'self';
-          base-uri 'self';
-          form-action 'self';
-          upgrade-insecure-requests;
-        `
-          .replace(/\s+/g, " ")
-          .trim(),
-      },
-    ],
-  },
-];
-```
-
-#### Header Explanations
+#### Static Headers
 
 | Header                        | Value                                          | Purpose                                                         |
 | ----------------------------- | ---------------------------------------------- | --------------------------------------------------------------- |
 | **X-DNS-Prefetch-Control**    | `on`                                           | Enable DNS prefetching for faster external links                |
 | **Strict-Transport-Security** | `max-age=63072000; includeSubDomains; preload` | Force HTTPS for 2 years, include subdomains, allow preload list |
-| **X-Frame-Options**           | `SAMEORIGIN`                                   | Prevent clickjacking (only allow same-origin framing)           |
+| **X-Frame-Options**           | `DENY`                                         | Prevent clickjacking (disallow all framing)                     |
 | **X-Content-Type-Options**    | `nosniff`                                      | Prevent MIME-sniffing attacks                                   |
 | **X-XSS-Protection**          | `1; mode=block`                                | Enable browser XSS filter (legacy browsers)                     |
 | **Referrer-Policy**           | `strict-origin-when-cross-origin`              | Send origin only on HTTPS→HTTP, full URL on same-origin         |
 | **Permissions-Policy**        | `camera=(), microphone=(), geolocation=()...`  | Disable sensitive browser APIs                                  |
-| **Content-Security-Policy**   | See below                                      | Control resource loading to prevent XSS/injection               |
 
-#### Content Security Policy (CSP)
+#### Dynamic Content Security Policy (CSP)
 
-| Directive                   | Value                                  | Reason                                                            |
-| --------------------------- | -------------------------------------- | ----------------------------------------------------------------- |
-| `default-src`               | `'self'`                               | Only load resources from same origin by default                   |
-| `script-src`                | `'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://tagmanager.google.com` | Allow scripts from same origin + eval (Three.js shaders) + inline + GTM |
-| `style-src`                 | `'self' 'unsafe-inline'`               | Allow styles from same origin + inline (Tailwind, Framer Motion)  |
-| `img-src`                   | `'self' data: blob: https://www.googletagmanager.com https://www.google-analytics.com` | Allow images from same origin + data URIs + blob URLs + GTM/GA tracking pixels |
-| `font-src`                  | `'self' data:`                         | Allow fonts from same origin + data URIs                          |
-| `connect-src`               | `'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com` | Allow fetch/XHR to same origin + GA/GTM data collection |
-| `media-src`                 | `'none'`                               | Block audio/video elements (not used)                             |
-| `object-src`                | `'none'`                               | Block plugins (Flash, Java, etc.)                                 |
-| `frame-src`                 | `https://www.googletagmanager.com`     | Allow GTM preview mode iframe                                     |
-| `frame-ancestors`           | `'self'`                               | Only allow framing by same origin                                 |
-| `base-uri`                  | `'self'`                               | Restrict `<base>` tag to same origin                              |
-| `form-action`               | `'self'`                               | Only allow form submissions to same origin                        |
-| `upgrade-insecure-requests` | (no value)                             | Auto-upgrade HTTP→HTTPS requests                                  |
+The CSP is built dynamically by `buildContentSecurityPolicy()` in [next.config.ts](next.config.ts), following the principle of least privilege:
 
-**Note:** `unsafe-eval` is required for Three.js shader compilation. `unsafe-inline` is required for Framer Motion and Tailwind CSS. GTM/GA domains are whitelisted for analytics tracking. In a future version, these could be removed with a more restrictive CSP and nonces.
+1. **Base directives** are always applied
+2. **GTM domains** are only added when `NEXT_PUBLIC_GTM_ID` is set
+3. **Additional domains** can be added via `NEXT_PUBLIC_CSP_*` environment variables
+
+**Reference:** [Google Tag Platform CSP Guide](https://developers.google.com/tag-platform/security/guides/csp)
+
+| Directive                   | Base Value                             | GTM Addition                                                                             | Extension Env Var             |
+| --------------------------- | -------------------------------------- | ---------------------------------------------------------------------------------------- | ----------------------------- |
+| `default-src`               | `'self'`                               | -                                                                                        | -                             |
+| `script-src`                | `'self' 'unsafe-eval' 'unsafe-inline'` | `www.googletagmanager.com`, `googletagmanager.com`, `tagmanager.google.com`              | `NEXT_PUBLIC_CSP_SCRIPT_SRC`  |
+| `style-src`                 | `'self' 'unsafe-inline'`               | `googletagmanager.com`, `tagmanager.google.com`, `fonts.googleapis.com`                  | `NEXT_PUBLIC_CSP_STYLE_SRC`   |
+| `img-src`                   | `'self' data: blob:`                   | `www.googletagmanager.com`, `googletagmanager.com`, `ssl.gstatic.com`, `www.gstatic.com` | `NEXT_PUBLIC_CSP_IMG_SRC`     |
+| `font-src`                  | `'self' data:`                         | `fonts.gstatic.com`                                                                      | `NEXT_PUBLIC_CSP_FONT_SRC`    |
+| `connect-src`               | `'self'`                               | `www.googletagmanager.com`, `www.google.com`                                             | `NEXT_PUBLIC_CSP_CONNECT_SRC` |
+| `frame-src`                 | (none)                                 | -                                                                                        | `NEXT_PUBLIC_CSP_FRAME_SRC`   |
+| `media-src`                 | `'none'`                               | -                                                                                        | -                             |
+| `object-src`                | `'none'`                               | -                                                                                        | -                             |
+| `frame-ancestors`           | `'none'`                               | -                                                                                        | -                             |
+| `base-uri`                  | `'self'`                               | -                                                                                        | -                             |
+| `form-action`               | `'self'`                               | -                                                                                        | -                             |
+| `upgrade-insecure-requests` | (enabled)                              | -                                                                                        | -                             |
+
+**Notes:**
+
+- `unsafe-eval` is required for Three.js shader compilation
+- `unsafe-inline` is required for Framer Motion and Tailwind CSS
+- Without `NEXT_PUBLIC_GTM_ID`, no Google domains are whitelisted (more secure by default)
+- For other Google services, add domains via `NEXT_PUBLIC_CSP_*` variables per [Google's documentation](https://developers.google.com/tag-platform/security/guides/csp)
 
 ### Additional Security Measures
 

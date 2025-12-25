@@ -18,18 +18,16 @@ export default async function AppleIcon() {
   const dataUrl = `data:image/jpeg;base64,${base64Image}`;
 
   return new ImageResponse(
-    (
-      <img
-        src={dataUrl}
-        alt="Apple Icon"
-        width={size.width}
-        height={size.height}
-        style={{
-          width: "100%",
-          height: "100%",
-        }}
-      />
-    ),
+    <img
+      src={dataUrl}
+      alt="Apple Icon"
+      width={size.width}
+      height={size.height}
+      style={{
+        width: "100%",
+        height: "100%",
+      }}
+    />,
     {
       ...size,
     },
