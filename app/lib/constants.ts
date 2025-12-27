@@ -8,6 +8,7 @@ import type {
   Education,
   Link,
   BootMessage,
+  LegalNoticeData,
 } from "../types";
 
 /**
@@ -171,6 +172,31 @@ export const LINKS: Link[] = [
 ];
 
 /**
+ * Legal notice information (LCEN compliance)
+ */
+export const LEGAL_NOTICE: LegalNoticeData = {
+  identity: {
+    firstName: "Jonathan",
+    lastName: "About",
+  },
+  contact: {
+    address: "11 RUE DU FAUBOURG SAINT MARTIN, 75010, PARIS, FRANCE",
+    email: "contact@jonathan-about.com",
+    phone: "+33183644580",
+  },
+  hosting: {
+    name: "OVH",
+    legalForm: "SAS",
+    address: "2 RUE KELLERMANN, 59100 ROUBAIX, FRANCE",
+    phone: "+33972101007",
+  },
+  business: {
+    rcs: "835137456 R.C.S. Paris",
+    siren: "835137456",
+  },
+};
+
+/**
  * Keyboard shortcuts
  */
 export const KEYBOARD_SHORTCUTS = {
@@ -178,5 +204,6 @@ export const KEYBOARD_SHORTCUTS = {
   projects: "2",
   education: "3",
   connect: "4",
+  legal: "l",
   theme: "p",
 } as const;

@@ -97,7 +97,7 @@ The website serves as both to showcase skills, projects, education, and contact 
 
 ### ⌨️ Keyboard Navigation
 
-- **Section shortcuts**: Press `1-4` to jump to Skills, Projects, Education, or Connect
+- **Section shortcuts**: Press `1-4` to jump to Skills, Projects, Education, or Connect; `L` for Legal Notice
 - **Theme toggle**: Press `P` to switch between Red/Blue pill themes
 - **Full keyboard accessibility**: All interactive elements reachable via Tab/Shift+Tab
 - **Visual focus indicators**: Clear focus-visible outlines for keyboard users
@@ -240,7 +240,7 @@ The website serves as both to showcase skills, projects, education, and contact 
 - `MainInterface` - Main website content
 - `Header` - Site header with name and tagline
 - `Footer` - Navigation footer with section links
-- Various section components (Skills, Projects, Education, Connect)
+- Various section components (Skills, Projects, Education, Connect, LegalNotice)
 
 ### Rendering Strategy
 
@@ -423,10 +423,11 @@ www.jonathan-about.com/
 │   │   │   ├── MatrixParticles.tsx          # GPU instanced particle system
 │   │   │   └── MatrixRainScene.tsx          # Scene orchestrator
 │   │   ├── sections/                        # Content sections
-│   │   │   ├── ConnectSection.tsx           # Contact links (LinkedIn, GitHub, etc.)
-│   │   │   ├── EducationSection.tsx         # Education timeline
-│   │   │   ├── ProjectsSection.tsx          # Projects showcase
-│   │   │   └── SkillsSection.tsx            # Skills categories
+│   │   │   ├── Connect.tsx                  # Contact links (LinkedIn, GitHub, etc.)
+│   │   │   ├── Education.tsx                # Education timeline
+│   │   │   ├── LegalNotice.tsx              # Legal notice (LCEN compliance)
+│   │   │   ├── Projects.tsx                 # Projects showcase
+│   │   │   └── Skills.tsx                   # Skills categories
 │   │   ├── BootSequence.tsx                 # Terminal boot animation
 │   │   ├── Footer.tsx                       # Navigation footer
 │   │   ├── Header.tsx                       # Site header
@@ -435,7 +436,7 @@ www.jonathan-about.com/
 │   ├── contexts/                            # React Context providers
 │   │   └── ThemeContext.tsx                 # Theme management (red/blue pill)
 │   ├── hooks/                               # Custom React hooks
-│   │   ├── useKeyboard.ts                   # Keyboard navigation hook (1-4, P)
+│   │   ├── useKeyboard.ts                   # Keyboard navigation hook (1-4, L, P)
 │   │   ├── useSound.ts                      # Web Audio API hook
 │   │   └── useThemeClasses.ts               # Theme-aware CSS class utility
 │   ├── lib/                                 # Utilities and managers
@@ -797,15 +798,16 @@ Full keyboard control for accessibility and power users.
 
 #### Keyboard Shortcuts
 
-| Key           | Action                | Description                         |
-| ------------- | --------------------- | ----------------------------------- |
-| **1**         | Navigate to Skills    | Jump to Skills section              |
-| **2**         | Navigate to Projects  | Jump to Projects section            |
-| **3**         | Navigate to Education | Jump to Education section           |
-| **4**         | Navigate to Connect   | Jump to Connect section             |
-| **P**         | Toggle Theme          | Switch between Red Pill ↔ Blue Pill |
-| **Tab**       | Next Element          | Focus next interactive element      |
-| **Shift+Tab** | Previous Element      | Focus previous interactive element  |
+| Key           | Action                   | Description                         |
+| ------------- | ------------------------ | ----------------------------------- |
+| **1**         | Navigate to Skills       | Jump to Skills section              |
+| **2**         | Navigate to Projects     | Jump to Projects section            |
+| **3**         | Navigate to Education    | Jump to Education section           |
+| **4**         | Navigate to Connect      | Jump to Connect section             |
+| **L**         | Navigate to Legal Notice | Jump to Legal Notice section        |
+| **P**         | Toggle Theme             | Switch between Red Pill ↔ Blue Pill |
+| **Tab**       | Next Element             | Focus next interactive element      |
+| **Shift+Tab** | Previous Element         | Focus previous interactive element  |
 
 #### Implementation
 
@@ -817,6 +819,7 @@ useKeyboard({
   "2": () => setActiveSection("projects"),
   "3": () => setActiveSection("education"),
   "4": () => setActiveSection("connect"),
+  l: () => setActiveSection("legal"),
   p: () => toggleTheme(),
 });
 ```
@@ -1534,7 +1537,7 @@ This project is designed with accessibility as a core principle, not an aftertho
 
 1. Skip to main content link (hidden, appears on focus)
 2. Header/Logo
-3. Section buttons (Skills, Projects, Education, Connect)
+3. Section buttons (Skills, Projects, Education, Connect, Legal Notice)
 4. Content links (GitHub, LinkedIn, etc.)
 5. Footer navigation
 

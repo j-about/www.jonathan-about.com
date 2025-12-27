@@ -10,7 +10,7 @@ export type Theme = "red-pill" | "blue-pill";
 /**
  * Navigation section types
  */
-export type Section = "skills" | "projects" | "education" | "connect";
+export type Section = "skills" | "projects" | "education" | "connect" | "legal";
 
 /**
  * Skill group with category and technologies
@@ -49,6 +49,31 @@ export interface Link {
   label: string;
   url: string;
   external: boolean;
+}
+
+/**
+ * Legal notice information (LCEN compliance)
+ */
+export interface LegalNoticeData {
+  identity: {
+    firstName: string;
+    lastName: string;
+  };
+  contact: {
+    address: string;
+    email: string;
+    phone: string;
+  };
+  hosting: {
+    name: string;
+    legalForm: string;
+    address: string;
+    phone: string;
+  };
+  business: {
+    rcs: string;
+    siren: string;
+  };
 }
 
 /**

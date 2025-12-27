@@ -36,7 +36,7 @@ export function useKeyboard({
 
       const key = event.key.toLowerCase();
 
-      // Section navigation (1-4)
+      // Section navigation (1-4, L)
       if (key === KEYBOARD_SHORTCUTS.skills) {
         event.preventDefault();
         onSectionChange("skills");
@@ -49,6 +49,9 @@ export function useKeyboard({
       } else if (key === KEYBOARD_SHORTCUTS.connect) {
         event.preventDefault();
         onSectionChange("connect");
+      } else if (key === KEYBOARD_SHORTCUTS.legal) {
+        event.preventDefault();
+        onSectionChange("legal");
       }
       // Theme toggle (P)
       else if (key === KEYBOARD_SHORTCUTS.theme) {

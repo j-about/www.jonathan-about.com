@@ -11,6 +11,7 @@ import Education from "./sections/Education";
 import Footer from "./Footer";
 import Header from "./Header";
 import Connect from "./sections/Connect";
+import LegalNotice from "./sections/LegalNotice";
 import Projects from "./sections/Projects";
 import Skills from "./sections/Skills";
 
@@ -33,14 +34,15 @@ import Skills from "./sections/Skills";
  *
  * **User Interactions:**
  * 1. Click navigation: Footer buttons trigger handleSectionChange
- * 2. Keyboard navigation: F1-F4 keys navigate sections, P toggles theme
+ * 2. Keyboard navigation: 1-4 and L keys navigate sections, P toggles theme
  * 3. Audio feedback: Click sounds on navigation, continuous ambient buzz
  *
  * **Keyboard Shortcuts:**
- * - F1: Navigate to Skills section
- * - F2: Navigate to Projects section
- * - F3: Navigate to Education section
- * - F4: Navigate to Connect section
+ * - 1: Navigate to Skills section
+ * - 2: Navigate to Projects section
+ * - 3: Navigate to Education section
+ * - 4: Navigate to Connect section
+ * - L: Navigate to Legal Notice section
  * - P: Toggle theme (Matrix green ↔ red pill)
  *
  * **Audio System:**
@@ -92,7 +94,7 @@ export default function MainInterface() {
    * Plays a click sound effect for tactile feedback, then updates the active
    * section state to trigger re-render with new content.
    *
-   * @param {Section} section - Target section identifier ('skills', 'projects', 'education', 'connect')
+   * @param {Section} section - Target section identifier ('skills', 'projects', 'education', 'connect', 'legal')
    */
   const handleSectionChange = (section: Section) => {
     playSound("click");
@@ -102,7 +104,7 @@ export default function MainInterface() {
   /**
    * Enable keyboard navigation shortcuts.
    *
-   * Registers keyboard event listeners for F1-F4 (section navigation) and P (theme toggle).
+   * Registers keyboard event listeners for 1-4, L (section navigation) and P (theme toggle).
    * The useKeyboard hook handles all keyboard event logic and cleanup.
    *
    * Keyboard handlers are always enabled since this is the main interface.
@@ -135,6 +137,8 @@ export default function MainInterface() {
         return <Education />;
       case "connect":
         return <Connect />;
+      case "legal":
+        return <LegalNotice />;
       default:
         return <Skills />;
     }

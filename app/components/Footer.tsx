@@ -21,7 +21,7 @@ interface FooterProps {
  * Props for individual navigation button.
  *
  * @interface NavButtonProps
- * @property {string} itemKey - Function key identifier (F1-F4, P)
+ * @property {string} itemKey - Key identifier (1-4, L, P)
  * @property {string} label - Descriptive label shown on desktop
  * @property {string} emoji - Icon emoji shown on mobile
  * @property {boolean} isActive - Whether this button's section is currently active
@@ -39,7 +39,7 @@ interface NavButtonProps {
  * Navigation Button Component
  *
  * Individual button in the footer navigation bar. Each button displays
- * a function key (F1-F4, P) with either an emoji (mobile) or text label (desktop).
+ * a key (1-4, L, P) with either an emoji (mobile) or text label (desktop).
  *
  * **Responsive Behavior:**
  * - Mobile (< sm): Shows emoji icons for compact display
@@ -88,16 +88,19 @@ function NavButton({
 /**
  * Footer Navigation Component
  *
- * Fixed-bottom navigation bar with function key shortcuts.
- * Displays navigation options as function keys (F1-F4) plus a theme
- * toggle (P for "Pill" - red/green Matrix pill reference).
+ * Fixed-bottom navigation bar with keyboard shortcuts.
+ * Displays navigation options as keys (1-4) plus a theme toggle (P for "Pill").
+ * Legal Notice (L) is separated on the right side for visual distinction.
  *
- * **Navigation Items:**
- * - F1: Skills section (🧠 brain emoji on mobile)
- * - F2: Projects section (📁 folder emoji on mobile)
- * - F3: Education section (🎓 graduation cap emoji on mobile)
- * - F4: Connect section (🔗 link emoji on mobile)
+ * **Navigation Items (left side):**
+ * - 1: Skills section (🧠 brain emoji on mobile)
+ * - 2: Projects section (📁 folder emoji on mobile)
+ * - 3: Education section (🎓 graduation cap emoji on mobile)
+ * - 4: Connect section (🔗 link emoji on mobile)
  * - P: Theme toggle (💊 pill emoji on mobile)
+ *
+ * **Navigation Item (right side, separated):**
+ * - L: Legal Notice section (⚖ scale emoji on mobile)
  *
  * **Features:**
  * - White function key badges (high contrast)
@@ -119,7 +122,7 @@ function NavButton({
  *
  * **Keyboard Support:**
  * Users can navigate sections using keyboard via parent MainInterface component
- * which listens for F1-F4 and P key presses.
+ * which listens for 1-4, L, and P key presses.
  *
  * @param {FooterProps} props - Component props
  * @param {Section} props.activeSection - Currently displayed section
@@ -134,7 +137,7 @@ export default function Footer({
 }: FooterProps) {
   const tc = useThemeClasses();
 
-  const navItems: Array<{
+  const mainNavItems: Array<{
     key: string;
     label: string;
     emoji: string;
@@ -154,31 +157,50 @@ export default function Footer({
     },
   ];
 
+  const legalNavItem = {
+    key: "L",
+    label: "Legal Notice",
+    emoji: "\u{2696}",
+    section: "legal" as Section,
+  };
+
   return (
     <footer
       className={`fixed right-0 bottom-0 left-0 z-30 ${tc.bg.panel}`}
       role="contentinfo"
     >
       <nav
-        className={`flex flex-wrap items-center gap-x-2 pl-4 text-base select-none ${tc.bg.accent}`}
+        className={`flex flex-wrap items-center justify-between px-4 text-base select-none ${tc.bg.accent}`}
         aria-label="Main navigation"
       >
-        {navItems.map((item) => {
-          const isActive = activeSection === item.section;
+        {/* Main navigation items (left) */}
+        <div className="flex flex-wrap items-center gap-x-2">
+          {mainNavItems.map((item) => {
+            const isActive = activeSection === item.section;
 
-          return (
-            <NavButton
-              key={item.key}
-              itemKey={item.key}
-              label={item.label}
-              emoji={item.emoji}
-              isActive={isActive}
-              onClick={() =>
-                item.section ? onSectionChange(item.section) : item.action?.()
-              }
-            />
-          );
-        })}
+            return (
+              <NavButton
+                key={item.key}
+                itemKey={item.key}
+                label={item.label}
+                emoji={item.emoji}
+                isActive={isActive}
+                onClick={() =>
+                  item.section ? onSectionChange(item.section) : item.action?.()
+                }
+              />
+            );
+          })}
+        </div>
+
+        {/* Legal notice button (right) */}
+        <NavButton
+          itemKey={legalNavItem.key}
+          label={legalNavItem.label}
+          emoji={legalNavItem.emoji}
+          isActive={activeSection === legalNavItem.section}
+          onClick={() => onSectionChange(legalNavItem.section)}
+        />
       </nav>
     </footer>
   );
